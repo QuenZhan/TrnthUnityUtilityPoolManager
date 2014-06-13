@@ -4,7 +4,7 @@ TrnthUnityUtilityPoolManager
 require unity plugin : pool manager
 
 
-## Require 
+## Requirement
 
 1. TrnthUnityUtilityScripts
 1. Pool Manager 
