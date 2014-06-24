@@ -5,8 +5,8 @@ public class SpawnHere : TRNTH.PoolBase{
 	public GameObject prefab;
 	public bool chooseInChildren=false;
 	public float probability=1;
-	public void execute(){
-		if(probability<Random.value)return;
+	public GameObject execute(){
+		if(probability<Random.value)return null;
 		Transform _prefab;
 		if(chooseInChildren){
 			_prefab=U.chooseChild(prefab.transform);
@@ -14,6 +14,7 @@ public class SpawnHere : TRNTH.PoolBase{
 		var instance=Spawn(_prefab);
 		instance.transform.position=pos;
 		enabled=false;
+		return instance.gameObject;
 	}
 	void OnEnable(){
 		execute();
