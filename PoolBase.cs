@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using PathologicalGames;
 namespace TRNTH{
-public class PoolBase:TRNTH.MonoBehaviour{
+public class PoolBase:TrnthMonoBehaviour{
 	public Transform Spawn(GameObject gobj){
 		return Spawn(gobj.transform);
 	}
