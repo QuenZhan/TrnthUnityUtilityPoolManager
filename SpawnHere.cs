@@ -4,7 +4,9 @@ using TRNTH;
 public class SpawnHere : TRNTH.PoolBase{
 	public GameObject prefab;
 	public bool chooseInChildren=false;
+	public bool executeOnSpawned=false;
 	public float probability=1;
+	public float delay=0;
 	public GameObject execute(){
 		if(probability<Random.value)return null;
 		Transform _prefab;
@@ -17,6 +19,10 @@ public class SpawnHere : TRNTH.PoolBase{
 		return instance.gameObject;
 	}
 	void OnEnable(){
-		execute();
+		//execute();
+		Invoke("execute",delay);
+	}
+	void OnSpawned(){
+		if(executeOnSpawned)Invoke("execute",delay);
 	}
 }
