@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Linq;
 using TRNTH;
-public class SpawnHere : TRNTH.PoolBase{
+public class TrnthSpawn : TRNTH.PoolBase{
 	public GameObject prefab;
 	public bool chooseInChildren=false;
 	public bool executeOnSpawned=false;

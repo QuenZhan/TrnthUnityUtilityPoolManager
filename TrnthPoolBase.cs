@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using PathologicalGames;
 public class TrnthPoolBase:TrnthMonoBehaviour{
 	public GameObject Spawn(GameObject gobj){
-		return Spawn(gobj.transform).gameObject;
+		var gg=Spawn(gobj.transform);
+		if(!gg)return null;
+		return gg.gameObject;
 	}
 	public Transform Spawn(Transform tra){
 		var instance=PoolManager.Pools["TRNTH"].Spawn(tra);
