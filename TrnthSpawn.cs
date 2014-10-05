@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Linq;
 using TRNTH;
-public class TrnthSpawn : TRNTH.PoolBase{
+public class TrnthSpawn : TrnthPoolBase{
 	public GameObject prefab;
 	public bool chooseInChildren=false;
 	public bool executeOnSpawned=false;
@@ -19,6 +19,7 @@ public class TrnthSpawn : TRNTH.PoolBase{
 			_prefab=U.choose<Transform>(q.ToArray());
 		}else _prefab=prefab.transform;
 		var instance=Spawn(_prefab);
+		if(!instance)return null;
 		instance.transform.position=pos;
 		enabled=false;
 		if(beChild)instance.transform.parent=transform;

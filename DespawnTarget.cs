@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-public class DespawnTarget : TRNTH.PoolBase {
+public class DespawnTarget : TrnthPoolBase {
 	public GameObject targetToDespawn;
 	public bool executeOnSpawned=true;
 	public float delay;
