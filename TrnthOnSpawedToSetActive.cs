@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TrnthOnSpawedToSetActive : TRNTH.PoolBase {
+public class TrnthOnSpawedToSetActive : TrnthPoolBase {
 	public GameObject[] gobjs;
 	public bool yes;
 	void OnSpawned(){

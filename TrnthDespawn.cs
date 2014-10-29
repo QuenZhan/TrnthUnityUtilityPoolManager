@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-public class DespawnTarget : TrnthPoolBase {
+public class TrnthDespawn : TrnthPoolBase {
 	public GameObject targetToDespawn;
 	public bool executeOnSpawned=true;
 	public float delay;
@@ -8,7 +8,7 @@ public class DespawnTarget : TrnthPoolBase {
 		execute();
 	}
 	public virtual void execute(){
-		enabled=false;
+		// enabled=false;
 		StartCoroutine(boo());
 	}
 	public override void Awake(){

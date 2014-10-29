@@ -21,7 +21,7 @@ public class TrnthSpawn : TrnthPoolBase{
 		var instance=Spawn(_prefab);
 		if(!instance)return null;
 		instance.transform.position=pos;
-		enabled=false;
+		// enabled=false;
 		if(beChild)instance.transform.parent=transform;
 		return instance.gameObject;
 	}
