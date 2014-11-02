@@ -7,6 +7,7 @@ public class TrnthSpawn : TrnthPoolBase{
 	public bool chooseInChildren=false;
 	public bool executeOnSpawned=false;
 	public bool beChild=false;
+	public bool worldRotationFit;
 	public float probability=1;
 	public float delay=0;
 	public GameObject execute(){
@@ -21,6 +22,9 @@ public class TrnthSpawn : TrnthPoolBase{
 		var instance=Spawn(_prefab);
 		if(!instance)return null;
 		instance.transform.position=pos;
+		if(worldRotationFit){
+			instance.transform.eulerAngles=transform.eulerAngles;
+		}
 		// enabled=false;
 		if(beChild)instance.transform.parent=transform;
 		return instance.gameObject;
