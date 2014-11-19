@@ -4,14 +4,18 @@ using System.Linq;
 using TRNTH;
 public class TrnthSpawn : TrnthPoolBase{
 	public GameObject prefab;
+	public TrnthPhysicsCast phyiscsCast;
 	public bool chooseInChildren=false;
-	public bool executeOnSpawned=false;
 	public bool beChild=false;
 	public bool worldRotationFit;
 	public float probability=1;
 	public float delay=0;
 	public GameObject execute(){
 		if(probability<Random.value)return null;
+		if(phyiscsCast){
+			phyiscsCast.update();
+			if(phyiscsCast.colliders.Length>0)return null;
+		}
 		Transform _prefab;
 		if(chooseInChildren){
 			var q=from t in getChildren(prefab.transform)
@@ -25,7 +29,6 @@ public class TrnthSpawn : TrnthPoolBase{
 		if(worldRotationFit){
 			instance.transform.eulerAngles=transform.eulerAngles;
 		}
-		// enabled=false;
 		if(beChild)instance.transform.parent=transform;
 		return instance.gameObject;
 	}
@@ -33,7 +36,7 @@ public class TrnthSpawn : TrnthPoolBase{
 		//execute();
 		Invoke("execute",delay);
 	}
-	void OnSpawned(){
-		if(executeOnSpawned)Invoke("execute",delay);
-	}
+	// void OnSpawned(){
+	// 	if(executeOnSpawned)Invoke("execute",delay);
+	// }
 }
