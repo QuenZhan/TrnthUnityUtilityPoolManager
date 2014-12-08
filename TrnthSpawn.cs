@@ -10,7 +10,7 @@ public class TrnthSpawn : TrnthPoolBase{
 	public bool worldRotationFit;
 	public float probability=1;
 	public float delay=0;
-	public GameObject execute(){
+	public virtual GameObject execute(){
 		if(probability<Random.value)return null;
 		if(phyiscsCast){
 			phyiscsCast.update();
