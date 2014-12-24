@@ -27,10 +27,10 @@ public class TrnthPoolBase:TrnthMonoBehaviour{
 		if(!tra.gameObject.activeInHierarchy)return;
 		var pool=PoolManager.Pools[poolName];
 		if(pool.IsSpawned(tra))pool.Despawn(tra,delay);
-		else {
-			pool.Add(tra,tra.name,true,true);
+		// else {
+			// pool.Add(tra,tra.name,true,true);
 			// Destroy(tra.gameObject,delay);
-		}
+		// }
 	}
 	public void poolAdd(Transform tra){
 		var pool=PoolManager.Pools[poolName];
