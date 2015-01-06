@@ -5,9 +5,10 @@ using TRNTH;
 
 [RequireComponent(typeof(TrnthSpawn))]
 public class TrnthHVSActionSpawener : TrnthHVSAction{
+	public TrnthSpawn spawner;
 	protected override void _execute(){
-		if(!_spawner)_spawner=GetComponent<TrnthSpawn>();
-		_spawner.execute();
+		base._execute();
+		if(!spawner)spawner=GetComponent<TrnthSpawn>();
+		spawner.execute();
 	}
-	TrnthSpawn _spawner;
 }
