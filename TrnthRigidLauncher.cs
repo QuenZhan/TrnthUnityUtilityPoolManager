@@ -8,7 +8,10 @@ public class TrnthRigidLauncher : TrnthHVSAction {
 	protected override void _execute(){
 		base._execute();
 		var instance=spawner.execute();
-		var rig=instance.rigidbody;
+		var rig=instance.GetComponent<Rigidbody>();
+		if(!rig){
+			rig=instance.GetComponentInChildren<Rigidbody>();
+		}
 		rig.velocity=transform.TransformDirection(velocityInit+Random.value*noise);
 	}
 }
