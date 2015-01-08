@@ -2,10 +2,14 @@
 using System.Collections;
 using PathologicalGames;
 public class TrnthHVSActionDespawn : TrnthHVSActionPoolBase {
+	public bool destroyIfFailed=true;
 	protected override void _execute(){
 		var tra=prefab.transform;
-		// if(!tra.gameObject.activeInHierarchy)return;
 		var pool=PoolManager.Pools[this.pool];
-		if(pool.IsSpawned(tra))pool.Despawn(tra);
+		if(pool.IsSpawned(tra)){
+			pool.Despawn(tra);
+			return;
+		}
+		if(destroyIfFailed)Destroy(prefab);
 	}
 }
