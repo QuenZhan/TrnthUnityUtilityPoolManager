@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TrnthRigidLauncher : TrnthHVSAction {
-	public TrnthSpawn spawner;
+public class TrnthHVSActionSpawnRigid : TrnthHVSActionSpawn {
 	public Vector3 velocityInit;
 	public Vector3 noise;
 	protected override void _execute(){
 		base._execute();
-		var instance=spawner.execute();
+		var instance=spawned;
 		var rig=instance.GetComponent<Rigidbody>();
 		if(!rig){
 			rig=instance.GetComponentInChildren<Rigidbody>();
