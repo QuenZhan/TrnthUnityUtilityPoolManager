@@ -5,7 +5,7 @@ public class TrnthHVSActionSpawn : TrnthHVSActionPoolBase {
 	public bool beChild=false;
 	public bool positionFit=true;
 	public bool rotationFit;
-	// public string rename;
+	public string rename="";
 	public TrnthHVSCondition onSucceed;
 	public TrnthHVSCondition onFail;
 	public Transform spawned{get;private set;}
@@ -22,7 +22,7 @@ public class TrnthHVSActionSpawn : TrnthHVSActionPoolBase {
 		}
 		if(positionFit)spawned.position=transform.position;
 		if(rotationFit)spawned.eulerAngles=transform.eulerAngles;
-		// if(rename!="")spawned.name=rename;
+		if(rename!="")spawned.name=rename;
 		if(beChild)spawned.parent=transform;
 		if(onSucceed)onSucceed.send();
 	}
