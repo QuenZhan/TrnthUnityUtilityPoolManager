@@ -4,6 +4,7 @@ using PathologicalGames;
 public class TrnthHVSActionDespawn : TrnthHVSActionPoolBase {
 	public bool destroyIfFailed=true;
 	protected override void _execute(){
+		if(!prefab)return;
 		var tra=prefab.transform;
 		var pool=PoolManager.Pools[this.pool];
 		if(pool.IsSpawned(tra)){
