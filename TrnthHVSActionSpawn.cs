@@ -6,7 +6,9 @@ public class TrnthHVSActionSpawn : TrnthHVSActionPoolBase {
 	public bool positionFit=true;
 	public bool rotationFit;
 	public string rename="";
+	[HideInInspector]
 	public TrnthHVSCondition onSucceed;
+	[HideInInspector]
 	public TrnthHVSCondition onFail;
 	public Transform spawned{get;private set;}
 	protected override void _execute(){
