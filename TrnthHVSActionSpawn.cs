@@ -17,15 +17,21 @@ public class TrnthHVSActionSpawn : TrnthHVSActionPoolBase {
 			return;
 		}
 		base._execute();
-		spawned=PoolManager.Pools[this.pool].Spawn(prefab.transform);
+		var position=prefab.transform.position;
+		var rotation=prefab.transform.rotation;
+		Transform parent=null;
+		if(positionFit)position=this.transform.position;
+		if(rotationFit)rotation=this.transform.rotation;
+		if(beChild)parent=this.transform;
+		spawned=PoolManager.Pools[this.pool].Spawn(prefab.transform,position,rotation,parent);
 		if(!spawned){
 			if(onFail)onFail.send();
 			return;
 		}
-		if(positionFit)spawned.position=transform.position;
-		if(rotationFit)spawned.eulerAngles=transform.eulerAngles;
+		// if(positionFit)spawned.position=transform.position;
+		// if(rotationFit)spawned.eulerAngles=transform.eulerAngles;
 		if(rename!="")spawned.name=rename;
-		if(beChild)spawned.parent=transform;
+		// if(beChild)spawned.parent=transform;
 		if(onSucceed)onSucceed.send();
 	}
 }
