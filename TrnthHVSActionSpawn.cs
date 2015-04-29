@@ -5,17 +5,15 @@ public class TrnthHVSActionSpawn : TrnthHVSActionPoolBase {
 	public bool beChild=false;
 	public bool positionFit=true;
 	public bool rotationFit;
+	public bool instantiateIfNoPool=true;
 	public string rename="";
+	public float despawnAfter=5;
 	[HideInInspector]
 	public TrnthHVSCondition onSucceed;
 	[HideInInspector]
 	public TrnthHVSCondition onFail;
 	public Transform spawned{get;private set;}
 	protected override void _execute(){
-		if(!PoolManager.Pools.ContainsKey(this.pool)){
-			Debug.LogWarning("PoolManager.Pools has no pool : "+this.pool,transform);
-			return;
-		}
 		base._execute();
 		var position=prefab.transform.position;
 		var rotation=prefab.transform.rotation;
@@ -23,7 +21,15 @@ public class TrnthHVSActionSpawn : TrnthHVSActionPoolBase {
 		if(positionFit)position=this.transform.position;
 		if(rotationFit)rotation=this.transform.rotation;
 		if(beChild)parent=this.transform;
-		spawned=PoolManager.Pools[this.pool].Spawn(prefab.transform,position,rotation,parent);
+		var canPooling=PoolManager.Pools.ContainsKey(this.pool);
+		if(!canPooling){
+			Debug.LogWarning("PoolManager.Pools has no pool : "+this.pool,transform);
+			if(instantiateIfNoPool)spawned=(Instantiate(prefab) as GameObject).transform;
+			// else return;
+			// return;
+		}else{
+			spawned=PoolManager.Pools[this.pool].Spawn(prefab.transform,position,rotation,parent);			
+		}
 		if(!spawned){
 			if(onFail)onFail.send();
 			return;
@@ -33,5 +39,9 @@ public class TrnthHVSActionSpawn : TrnthHVSActionPoolBase {
 		if(rename!="")spawned.name=rename;
 		// if(beChild)spawned.parent=transform;
 		if(onSucceed)onSucceed.send();
+		if(despawnAfter>0){
+			if(canPooling)PoolManager.Pools[this.pool].Despawn(spawned,despawnAfter);
+			else Destroy(spawned.gameObject,despawnAfter);
+		}
 	}
 }
