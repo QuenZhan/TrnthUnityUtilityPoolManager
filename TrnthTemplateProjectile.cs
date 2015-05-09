@@ -11,6 +11,7 @@ public class TrnthTemplateProjectile : MonoBehaviour {
 	public TrnthHVSActionSpawn fxHit;
 	public TrnthHVSActionSpawn fxEnd;
 	public TrnthHVSCondition attackSender;
+	[ContextMenu("initialize")]
 	public void initialize(){
 		col.enabled=false;
 		rigid.transform.localPosition=Vector3.zero;
@@ -23,6 +24,8 @@ public class TrnthTemplateProjectile : MonoBehaviour {
 		col.enabled=false;
 		loop.Stop();
 		fxHit.execute();
+		rigid.velocity=Vector3.zero;
+		attackSender.send();
 	}
 	void OnDespawn(){
 		rigid.transform.localPosition=Vector3.zero;

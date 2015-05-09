@@ -7,10 +7,11 @@ public class TrnthHVSActionSpawnProjectile : TrnthHVSActionSpawn {
 	protected override void _execute(){
 		base._execute();
 		var instance=spawned;
-		var rig=instance.GetComponent<TrnthTemplateProjectile>().rigid;
+		var projectile=instance.GetComponent<TrnthTemplateProjectile>();
 		var vec=new Vector3(velocityInit.x+Random.value*noise.x
 			,velocityInit.y+Random.value*noise.y
 			,velocityInit.z+Random.value*noise.z);
-		rig.velocity=transform.TransformDirection(vec);
+		projectile.rigid.velocity=transform.TransformDirection(vec);
+		projectile.initialize();
 	}
 }
