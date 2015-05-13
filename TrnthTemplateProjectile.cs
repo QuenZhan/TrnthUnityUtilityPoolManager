@@ -18,13 +18,13 @@ public class TrnthTemplateProjectile : MonoBehaviour {
 		loop.Play();
 		fxStart.execute();
 		Invoke("enableCollider",timerActivate);
-		Invoke("hit",5);
+		Invoke("hit",lifetime);
 	}
 	public void hit(){
 		col.enabled=false;
 		loop.Stop();
 		fxHit.execute();
-		rigid.velocity=Vector3.zero;
+		// rigid.velocity=Vector3.zero;
 		attackSender.send();
 	}
 	void OnDespawn(){
