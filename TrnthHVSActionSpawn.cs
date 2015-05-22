@@ -14,6 +14,7 @@ public class TrnthHVSActionSpawn : TrnthHVSActionPoolBase {
 	public TrnthHVSCondition onFail;
 	public Transform spawned{get;private set;}
 	protected override void _execute(){
+		spawned=null;
 		base._execute();
 		var position=prefab.transform.position;
 		var rotation=prefab.transform.rotation;
