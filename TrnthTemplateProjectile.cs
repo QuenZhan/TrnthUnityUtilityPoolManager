@@ -7,6 +7,7 @@ public class TrnthTemplateProjectile : MonoBehaviour {
 	public Collider col;
 	public Rigidbody rigid;
 	public ParticleSystem loop;
+	public GameObject display;
 	public TrnthHVSActionSpawn fxStart;
 	public TrnthHVSActionSpawn fxHit;
 	public TrnthHVSActionSpawn fxEnd;
@@ -15,17 +16,19 @@ public class TrnthTemplateProjectile : MonoBehaviour {
 	public void initialize(){
 		col.enabled=false;
 		rigid.transform.localPosition=Vector3.zero;
-		loop.Play();
+		// loop.Play();
+		display.SetActive(true);
 		fxStart.execute();
 		Invoke("enableCollider",timerActivate);
 		Invoke("hit",lifetime);
 	}
 	public void hit(){
 		col.enabled=false;
-		loop.Stop();
+		// loop.Stop();
+		display.SetActive(false);
 		fxHit.execute();
-		// rigid.velocity=Vector3.zero;
 		attackSender.send();
+
 	}
 	void OnDespawn(){
 		rigid.transform.localPosition=Vector3.zero;

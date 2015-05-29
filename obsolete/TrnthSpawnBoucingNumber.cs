@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Linq;
 using TRNTH;
+using PathologicalGames;
+
 public class TrnthSpawnBoucingNumber:TrnthSpawn{
-	public TrnthAttackReceiver reciever;
+	public TrnthHVSConditionAttackReceiver reciever;
 	// public 
 	// public TrnthSender
 	public int damage;
@@ -17,6 +19,8 @@ public class TrnthSpawnBoucingNumber:TrnthSpawn{
 			var bn=instance.GetComponent<TrnthBoucingNumber>();
 			bn.setup((int)damage);
 		}
+		var pool=PoolManager.Pools[poolName];
+		pool.Despawn(instance.transform,3f);
 		return instance;
 	}
 }
