@@ -42,7 +42,10 @@ public class TrnthHVSActionSpawn : TrnthHVSActionPoolBase {
 		if(onSucceed)onSucceed.send();
 		if(despawnAfter>0){
 			if(canPooling)PoolManager.Pools[this.pool].Despawn(spawned,despawnAfter);
-			else Destroy(spawned.gameObject,despawnAfter);
+			else {
+				Debug.LogWarning("!canPooling",transform);
+				if(instantiateIfNoPool)Destroy(spawned.gameObject,despawnAfter);
+			}
 		}
 	}
 }
