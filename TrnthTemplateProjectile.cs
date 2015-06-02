@@ -23,6 +23,7 @@ public class TrnthTemplateProjectile : MonoBehaviour {
 		Invoke("hit",lifetime);
 	}
 	public void hit(){
+		CancelInvoke();
 		col.enabled=false;
 		// loop.Stop();
 		display.SetActive(false);
@@ -30,7 +31,10 @@ public class TrnthTemplateProjectile : MonoBehaviour {
 		attackSender.send();
 
 	}
-	void OnDespawn(){
+	void OnEnable(){
+		initialize();
+	}
+	void OnDisable(){
 		rigid.transform.localPosition=Vector3.zero;
 		col.enabled=false;
 	}
