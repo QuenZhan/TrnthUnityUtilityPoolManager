@@ -7,7 +7,7 @@ public class TrnthHVSActionSpawn : TrnthHVSActionPoolBase {
 	public bool rotationFit;
 	public bool instantiateIfNoPool=true;
 	public string rename="";
-	public float despawnAfter=5;
+	public float despawnAfter=1;
 	[HideInInspector]
 	public TrnthHVSCondition onSucceed;
 	[HideInInspector]
