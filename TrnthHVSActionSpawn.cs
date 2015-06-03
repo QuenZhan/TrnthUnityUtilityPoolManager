@@ -26,8 +26,6 @@ public class TrnthHVSActionSpawn : TrnthHVSActionPoolBase {
 		if(!canPooling){
 			Debug.LogWarning("PoolManager.Pools has no pool : "+this.pool,transform);
 			if(instantiateIfNoPool)spawned=(Instantiate(prefab) as GameObject).transform;
-			// else return;
-			// return;
 		}else{
 			spawned=PoolManager.Pools[this.pool].Spawn(prefab.transform,position,rotation,parent);			
 		}
@@ -35,10 +33,7 @@ public class TrnthHVSActionSpawn : TrnthHVSActionPoolBase {
 			if(onFail)onFail.send();
 			return;
 		}
-		// if(positionFit)spawned.position=transform.position;
-		// if(rotationFit)spawned.eulerAngles=transform.eulerAngles;
 		if(rename!="")spawned.name=rename;
-		// if(beChild)spawned.parent=transform;
 		if(onSucceed)onSucceed.send();
 		if(despawnAfter>0){
 			if(canPooling)PoolManager.Pools[this.pool].Despawn(spawned,despawnAfter);
