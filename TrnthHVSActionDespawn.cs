@@ -2,7 +2,7 @@
 using System.Collections;
 using PathologicalGames;
 public class TrnthHVSActionDespawn : TrnthHVSActionPoolBase {
-	public bool destroyIfFailed=false;
+	// public bool destroyIfFailed=false;
 	protected override void _execute(){
 		var tra=prefab.transform;
 		var pool=PoolManager.Pools[this.pool];
@@ -11,8 +11,8 @@ public class TrnthHVSActionDespawn : TrnthHVSActionPoolBase {
 			return;
 		}
 		Debug.LogWarning("destroyIfFailed",transform);
-		if(destroyIfFailed){
-			Destroy(prefab);
-		}
+		// if(destroyIfFailed){
+		// 	Destroy(prefab);
+		// }
 	}
 }
