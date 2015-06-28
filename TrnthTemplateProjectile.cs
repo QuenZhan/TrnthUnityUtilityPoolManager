@@ -15,6 +15,7 @@ public class TrnthTemplateProjectile : MonoBehaviour {
 	[ContextMenu("initialize")]
 	public void initialize(){
 		col.enabled=false;
+		rigid.gameObject.SetActive(true);
 		rigid.transform.localPosition=Vector3.zero;
 		// loop.Play();
 		display.SetActive(true);
@@ -26,6 +27,8 @@ public class TrnthTemplateProjectile : MonoBehaviour {
 		CancelInvoke();
 		col.enabled=false;
 		// loop.Stop();
+		rigid.gameObject.SetActive(false);
+
 		display.SetActive(false);
 		fxHit.execute();
 		attackSender.send();
