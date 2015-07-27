@@ -11,7 +11,7 @@ public class TrnthSpawnBoucingNumber:TrnthSpawn{
 	public int damage;
 	public override GameObject execute(){
 		if(reciever){
-			if(!reciever.attack.showDamage)return null;
+			if(!reciever.result.showDamage)return null;
 			damage=(int)reciever.damage;
 		}
 		var instance=base.execute();
