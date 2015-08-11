@@ -5,16 +5,16 @@ using TRNTH;
 using PathologicalGames;
 
 public class TrnthSpawnBoucingNumber:TrnthSpawn{
-	public TrnthHVSConditionAttackReceiver reciever;
+	// public TrnthHVSConditionAttackReceiver reciever;
 	// public 
 	// public TrnthSender
 	public int damage;
 	public override GameObject execute(){
-		if(reciever){
-			// Debug.Log(reciever.result.showDamage);
-			if(!reciever.result.showDamage)return null;
-			damage=(int)reciever.damage;
-		}
+		// if(reciever){
+		// 	// Debug.Log(reciever.result.showDamage);
+		// 	if(!reciever.result.showDamage)return null;
+		// 	damage=(int)reciever.damage;
+		// }
 		var instance=base.execute();
 		if(instance){
 			var bn=instance.GetComponent<TrnthBoucingNumber>();
