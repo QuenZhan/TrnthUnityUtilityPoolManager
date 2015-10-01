@@ -6,7 +6,7 @@ public class TrnthHVSActionSpawnProjectile : TrnthHVSActionSpawn {
 	public Vector3 noise;
 	protected override void _execute(){
 		base._execute();
-		var instance=spawned;
+		var instance=instantiated;
 		var projectile=instance.GetComponent<TrnthTemplateProjectile>();
 		var vec=new Vector3(velocityInit.x+Random.value*noise.x
 			,velocityInit.y+Random.value*noise.y

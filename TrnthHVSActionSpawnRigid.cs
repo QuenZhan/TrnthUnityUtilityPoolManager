@@ -6,7 +6,7 @@ public class TrnthHVSActionSpawnRigid : TrnthHVSActionSpawn {
 	public Vector3 noise;
 	protected override void _execute(){
 		base._execute();
-		var instance=spawned;
+		var instance=instantiated;
 		var rig=instance.GetComponent<Rigidbody>();
 		if(!rig){
 			rig=instance.GetComponentInChildren<Rigidbody>();
