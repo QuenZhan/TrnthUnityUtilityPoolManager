@@ -10,7 +10,7 @@ public class TrnthHVSActionDespawn : TrnthHVSActionPoolBase {
 			pool.Despawn(tra);
 			return;
 		}
-		Debug.LogWarning("destroyIfFailed",transform);
+		Debug.LogWarning("destroyIfFailed "+prefab.name,transform);
 		// if(destroyIfFailed){
 		// 	Destroy(prefab);
 		// }
