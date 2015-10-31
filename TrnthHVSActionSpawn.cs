@@ -13,6 +13,11 @@ public class TrnthHVSActionSpawn : TrnthHVSActionPoolBase {
 	[HideInInspector]
 	public TrnthHVSCondition onFail;
 	public Transform spawned{get;private set;}
+	public GameObject spawn(GameObject go){
+		prefab=go;
+		_execute();
+		return spawned.gameObject;
+	}
 	protected override void _execute(){
 		spawned=null;
 		base._execute();
