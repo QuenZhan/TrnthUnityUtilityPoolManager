@@ -18,7 +18,7 @@ public class TrnthSpawnBoucingNumber:TrnthSpawn{
 		var instance=base.execute();
 		if(instance){
 			var bn=instance.GetComponent<TrnthBoucingNumber>();
-			bn.setup((int)damage);
+			bn.setup((int)damage,this.transform);
 		}
 		var pool=PoolManager.Pools[poolName];
 		pool.Despawn(instance.transform,3f);
