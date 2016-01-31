@@ -32,6 +32,7 @@ public class TrnthHVSActionSpawn : TrnthHVSActionPoolBase {
 			Debug.LogWarning("PoolManager.Pools has no pool : "+this.pool,transform);
 			if(instantiateIfNoPool)spawned=(Instantiate(prefab) as GameObject).transform;
 		}else{
+			prefab.transform.position=position;
 			spawned=PoolManager.Pools[this.pool].Spawn(prefab.transform,position,rotation,parent);
 		}
 		if(!spawned){
